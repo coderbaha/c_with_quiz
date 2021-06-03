@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+//bahadır aşık
+//180202134
+
+int nilpotentmi (int boyut,int dizi[boyut][boyut] )
+{
+    int matrisinkaresi[boyut][boyut];
+        int topla=0;
+        for(int i=0 ; i<boyut ;i++)
+        {
+            for(int j=0 ; j<boyut ; j++)
+            {
+                topla=0;
+                for(int k=0 ; k<boyut ; k++)
+                {
+                    topla += dizi[i][k]*dizi[k][j];
+                }
+                matrisinkaresi[i][j] = topla;
+                //printf("%d   ",matrisinkaresi[i][j]);
+
+            }
+           //printf("\n");
+        }
+        int kontrol=1;
+        for(int i=0 ; i<boyut ;i++)
+        {
+            for(int j=0 ; j<boyut ; j++)
+            {
+                if(matrisinkaresi[i][j]!=0)
+                kontrol=0;
+            }
+        }
+
+
+        return kontrol;
+}
+
+
+int main()
+{
+    int boyut,sonuc=0;
+    srand(time(NULL));
+
+    printf("Merhaba");
+    printf("Kare matrisin boyutunu giriniz : ");
+    scanf("%d",&boyut);
+
+    int matris[boyut][boyut];
+
+        for(int i=0 ; i<boyut ; i++)
+        {
+            for(int j=0 ; j<boyut ; j++)
+            {
+                matris[i][j]=(rand()%20)-10;
+            }
+        }
+        for(int i=0 ; i<boyut ; i++)
+        {
+            for(int j=0 ; j<boyut ; j++)
+            {
+                printf("%d  ",matris[i][j]);
+                //matris[i][j]=rand()%10;
+            }
+            printf("\n");
+        }
+    sonuc=nilpotentmi(boyut,matris);
+
+    if(sonuc==1)
+        printf("Matis Nilpotenttir");
+    else
+        printf("Matris Nilpotent Degildir.");
+
+    return 0;
+}

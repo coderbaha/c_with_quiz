@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+//180202134
+//bahadır aşık
+struct kimlik{
+ char isim[20];
+ int gun;
+ int ay;
+ int yil;
+};
+int kucuguBul(struct kimlik kim[],int sayi){
+    int temp;
+    char stemp[20];
+    int tgun;
+    int tay;
+    printf("Kisi Bİlgileri");
+    printf("--------------------------\n");
+    for(int i=0;i<sayi;i++){
+        printf("%s -  %d/ %d/ %d \n",kim[i].isim,kim[i].gun,kim[i].ay,kim[i].yil);
+    }
+    printf("--------------------------\n");
+for (int x = 0 ; x < sayi; x++)
+  {
+    for (int y = 0 ; y < sayi; y++)
+    {
+      if (kim[y].yil > kim[y+1].yil)
+      {
+        temp = kim[y].yil;
+        kim[y].yil= kim[y+1].yil;
+        kim[y+1].yil = temp;
+        strcpy(stemp,kim[y].isim);
+        strcpy(kim[y].isim,kim[y+1].isim);
+        strcpy(kim[y+1].isim,stemp);
+        tay = kim[y].ay;
+        kim[y].ay= kim[y+1].ay;
+        kim[y+1].ay = tay;
+        tgun = kim[y].gun;
+        kim[y].gun= kim[y+1].gun;
+        kim[y+1].gun = tgun;
+
+      }
+    }
+  }
+   printf("En kucuk kisinin ismi:%s\n",kim[sayi-1].isim);
+   printf("En kucuk kisinin dogum tarihi:%d / %d / %d",kim[sayi-1].gun,kim[sayi-1].ay,kim[sayi-1].yil);
+}
+
+int main()
+{
+    int kisi;
+    printf("Kisi Sayisini girin:\n");
+    scanf("%d",&kisi);
+    struct kimlik kisiler[kisi];
+    for(int i=0;i<kisi;i++){
+    printf("%d.Kisinin adini girin:\n",i+1);
+    scanf("%s",kisiler[i].isim);
+    printf("gun girin:\n");
+    scanf("%d",&kisiler[i].gun);
+    printf("ay  girin:\n");
+    scanf("%d",&kisiler[i].ay);
+    printf("yil girin:\n");
+    scanf("%d",&kisiler[i].yil);
+    }
+    kucuguBul(kisiler,kisi);
+    return 0;
+}

@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+//180202134
+//bahadır aşık
+void hesapla(int toplam,int *yil,int *ay,int *gun){
+    int temp=toplam/365;
+    *yil=temp;
+    temp=(*yil)*365;
+    toplam=toplam-temp;
+    *ay=toplam/30;
+    temp=(*ay)*30;
+    toplam=toplam-temp;
+    *gun=toplam;
+
+}
+int main()
+{
+    int toplam=0;
+    int yil=0;
+    int gun=0;
+    int ay=0;
+    printf("isin bitme suresini gun olarak giriniz:");
+    scanf("%d",&toplam);
+    hesapla(toplam,&yil,&ay,&gun);
+    printf("Belirtilen is %d yil %d ay %d gun surer.",yil,ay,gun);
+
+    return 0;
+}

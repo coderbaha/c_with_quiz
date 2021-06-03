@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define DOSYA_YOLU "veri.txt"
+#include <locale.h>
+//180202134
+//bahadır aşık
+
+int main()
+{
+    setlocale(LC_ALL, "Turkish");//türkçe karakter kullanmak için
+    FILE * dosya;
+    int sayi,temp,sayitemp;
+    int basamaksay=1;
+    int buyuk=1;
+    printf("sayı girin:");
+    scanf("%d",&sayi);
+    sayitemp=sayi;
+    int sayilar[]={0,1,2,3,4,5,6,7,8,9};
+    if ((dosya = fopen(DOSYA_YOLU, "w")) == NULL) {
+    printf("dosya acilamadi!\n");
+    exit(1);
+    }
+    while(sayitemp>10){
+        basamaksay++;
+        sayitemp=sayitemp/10;
+    }
+    for(int i=0;i<basamaksay-1;i++){
+        buyuk=buyuk*10;
+    }
+    while(buyuk>0){
+        temp=sayi/buyuk;
+        sayi=sayi%buyuk;
+        buyuk=buyuk/10;
+            if(temp==0){
+
+                    fprintf(dosya, "sifir  ");
+                    printf( "sifir  ");
+            }
+            if(temp==1){
+
+                    fprintf(dosya, "bir  ");
+                    printf("bir  ");
+            }
+            if(temp==2){
+
+                    fprintf(dosya, "iki  ");
+                    printf("iki  ");
+            }
+            if(temp==3){
+
+                    fprintf(dosya, "üç  ");
+                    printf("üç  ");
+            }
+            if(temp==4){
+
+                    fprintf(dosya, "dört  ");
+                    printf( "dört  ");
+            }
+            if(temp==5){
+
+                    fprintf(dosya, "beş  ");
+                    printf("beş  ");
+            }
+            if(temp==6){
+
+                    fprintf(dosya, "altı  ");
+                    printf("altı  ");
+            }
+            if(temp==7){
+
+                    fprintf(dosya, "yedi  ");
+                    printf("yedi  ");
+            }
+            if(temp==8){
+
+                    fprintf(dosya, "sekiz  ");
+                    printf("sekiz  ");
+            }
+            if(temp==9){
+
+                    fprintf(dosya, "dokuz  ");
+                    printf("dokuz  ");
+            }
+
+
+    }
+printf("\ndosyaya kaydedildi.");
+fclose(dosya);
+    return 0;
+}

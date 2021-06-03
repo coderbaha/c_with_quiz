@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+//180202134
+//Bahadır Aşık
+int main()
+{
+    int sayac=0;
+    int sayac2=0;
+    float tek[50];
+    int cift[51];
+    int asal[25];
+    int asalsay=0;
+    char dizitek[50];
+    char dizicift[51];
+    char diziasal[25];
+    for(int a=2;a<100;a++){
+            sayac2=0;
+    for(int i=2;i<a;i++)
+    {
+       if(a%i==0)
+       {
+           sayac2++;
+       }
+    }
+    if(sayac2==0)
+    {
+
+        asal[asalsay]=a;
+        asalsay++;
+    }
+    }
+    for(int a=3;a<=100;a++){
+        if(a%2==0){
+            cift[sayac]=a*2;
+            sayac++;
+
+        }
+    }
+    sayac=0;
+    for(int a=1;a<=100;a++){
+
+                        if(a%2!=0)
+                        {
+                        tek[sayac]=a;
+                        tek[sayac]=(tek[sayac]/2);
+                        sayac++;
+                        }
+                    }
+    for(int i=0;i<25;i++){
+            asal[i]=(asal[i]*asal[i]);
+    }
+    for(int i=0;i<50;i++){
+            printf("%d\t\n",cift[i]);
+    }
+    for(int i=0;i<49;i++){
+            printf("%d\t\n",tek[i]);
+    }
+    for(int i=0;i<25;i++){
+        printf("%d\t",asal[i]);
+    }
+    sprintf(dizicift,"%d",cift);
+    sprintf(dizitek,"%d",tek);
+    sprintf(diziasal,"%d",asal);
+    //printf("%s",dizicift);
+    return 0;
+}

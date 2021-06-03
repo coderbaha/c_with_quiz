@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+//180202134
+//bahadÄ±r aÅŸÄ±k
+struct kisi{
+    char isim[20];
+    int yas;
+};
+int main()
+{
+    int i,N;
+    struct kisi *dizi_ptr;
+    printf("kisi sayisini girin: ");
+    scanf("%d", &N);
+    dizi_ptr = (struct kisi*) malloc( N * sizeof(struct kisi) );
+    if (dizi_ptr == NULL) {
+    printf("HATA: bellek ayrilamadi\n");
+    exit(1);
+    }
+    for (i = 0 ; i < N ; i++) {
+    printf("isim girin: ");
+    scanf("%s", dizi_ptr[i].isim);
+    printf("yas girin: ");
+    scanf("%d", &dizi_ptr[i].yas);
+    }
+    int temp;
+    char stemp[20];
+    for (int x = 0 ; x < N; x++)
+    {
+    for (int y = 0 ; y < N; y++)
+    {
+      if (dizi_ptr[y].yas < dizi_ptr[y+1].yas)
+      {
+        temp = dizi_ptr[y].yas;
+        dizi_ptr[y].yas= dizi_ptr[y+1].yas;
+        dizi_ptr[y+1].yas = temp;
+        strcpy(stemp,dizi_ptr[y].isim);
+        strcpy(dizi_ptr[y].isim,dizi_ptr[y+1].isim);
+        strcpy(dizi_ptr[y+1].isim,stemp);
+
+
+      }
+    }
+  }
+    printf("\nYasa gore buyukten kucuge siralinmis hali:\n");
+    for(int i=0;i<N;i++){
+    printf("%s   %d\n", dizi_ptr[i].isim,dizi_ptr[i].yas);
+    }
+
+    char t[20];
+    int st;
+    for (int x = 1; x < N; x++)
+    {
+        for (int y = 1; y < N; y++)
+        {
+            if (strcmp(dizi_ptr[y - 1].isim, dizi_ptr[y].isim) > 0)
+            {
+                strcpy(t, dizi_ptr[y - 1].isim);
+                strcpy(dizi_ptr[y - 1].isim, dizi_ptr[y].isim);
+                strcpy(dizi_ptr[y].isim, t);
+                st = dizi_ptr[y].yas;
+                dizi_ptr[y].yas= dizi_ptr[y-1].yas;
+                dizi_ptr[y-1].yas = st;
+            }
+        }
+    }
+
+    printf("\nAda gore fihrist siralamasi: \n");
+    for (int x = 0; x < N; x++){
+        printf("%s  %d\n", dizi_ptr[x].isim,dizi_ptr[x].yas);
+    }
+
+    free(dizi_ptr);
+    return 0;
+}

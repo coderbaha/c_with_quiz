@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+//180202134
+//bahadır aşık
+int main()
+{
+    char cumle[100];
+    printf("Lutfen cumle giriniz:");
+    gets(cumle);
+    printf("Cumlesinin bas harfleri:\n");
+
+    if(cumle[0]!=' '){printf("%c\n",cumle[0]);}
+
+    for(int i=0;i<cumle[i]!='\0';i++){
+        if(cumle[i]==' '){
+                if(cumle[i+1]!=' '){
+                        printf("%c\n",cumle[i+1]);
+            }
+        }
+    }
+    return 0;
+}
